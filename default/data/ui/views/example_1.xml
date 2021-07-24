@@ -1,0 +1,18 @@
+<dashboard script="app.js">
+  <label>Examples</label>
+  <row>
+    <panel>
+      <html>
+        <button id="btn_table" class="btn btn-primary">Table View</button>
+        <button id="btn_chart_bar" class="btn btn-primary">Bar Chart</button>
+        <button id="btn_chart_area" class="btn btn-primary">Area Chart</button>
+        <button id="btn_custom_chart" class="btn btn-primary">event-timeline-viz</button>
+        <button id="btn_timelineview" class="btn btn-primary">timelineview</button>
+        <button id="btn_DataTemplateView" class="btn btn-primary">DataTemplateView</button>
+        <button id="btn_EventsViewer" class="btn btn-primary">EventsViewer</button>
+        <button id="btn_SearchBarView" class="btn btn-primary">SearchBarView</button>
+        <button id="btn_SplunkMapView" class="btn btn-primary">SplunkMapView</button>
+      </html>
+    </panel>
+  </row>
+</dashboard>
