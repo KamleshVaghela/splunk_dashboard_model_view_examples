@@ -239,3 +239,42 @@ require([
         modal.show();
     });
 });
+
+/* Model View on Table Drildown */
+
+require([
+    'underscore',
+    '../app/splunk_dashboard_model_view_examples/components/ModalViewComponent',
+    'splunkjs/mvc',
+    'splunkjs/mvc/searchmanager',
+    'splunkjs/mvc/simplexml/ready!'
+], function(_, ModalViewComponent, mvc, SearchManager) {
+    var tableElement = mvc.Components.getInstance("tbl_1");
+    tableElement.on("click", function(e) {
+        console.log(e.data);
+        console.log(e.data['row.sourcetype']);
+        var modal = new ModalViewComponent({
+            title: "Demo Table View",
+            id: "model_table_1",
+            search: new SearchManager({
+                earliest_time: "-15m",
+                latest_time: "now",
+                preview: false,
+                cache: false,
+                search: 'index=_internal sourcetype="' + e.data['row.sourcetype'] + '" | stats count by source'
+            }, { tokens: true, tokenNamespace: "submitted" }),
+            display_component: {
+                viz_model: require('splunkjs/mvc/tableview'),
+                viz_options: {
+                    pageSize: '10',
+                    data: "events",
+                    drilldown: "row",
+                },
+                drilldown: (e) => {
+                    console.log(e);
+                }
+            }
+        });
+        modal.show();
+    });
+});
