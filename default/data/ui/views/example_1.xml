@@ -15,4 +15,21 @@
       </html>
     </panel>
   </row>
+  <row>
+    <panel>
+      <table id="tbl_1">
+        <search>
+          <query>index=_internal |stats count by source, sourcetype</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">row</option>
+        <drilldown>
+          <condition>
+            
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
 </dashboard>
